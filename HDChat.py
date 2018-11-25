@@ -23,6 +23,15 @@ for d in csv.DictReader(open('script.csv')):
           acscript.append((d['acscript']))
           tsname.append((d['tsname']))
           tsscript.append((d['tsscript']))
+          
+smename = list(filter(None, smename))
+smescript = list(filter(None, smescript))
+rname = list(filter(None, rname))
+rscript = list(filter(None, rscript))
+acname = list(filter(None, acname))
+acscript = list(filter(None, acscript))
+tsname = list(filter(None, tsname))
+tsscript = list(filter(None, tsscript))
 
 #####functions for all the option boxes to pull the needed scripts based on the button lable
 def index(*entry):
