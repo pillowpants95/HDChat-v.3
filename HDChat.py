@@ -42,7 +42,7 @@ def index(*entry):
      r.clipboard_append(smescript[dex])
      r.update() 
      r.destroy()
-     tkvar1.set('Start, Middle, & End')
+     create()
      
 def rindex(*entry):
      dex = rname.index(*entry)
@@ -52,7 +52,7 @@ def rindex(*entry):
      r.clipboard_append(rscript[dex])
      r.update() 
      r.destroy()
-     tkvar2.set('Remote')
+     create()
      
 def acindex(*entry):
      dex = acname.index(*entry)
@@ -62,7 +62,7 @@ def acindex(*entry):
      r.clipboard_append(acscript[dex])
      r.update() 
      r.destroy()
-     tkvar3.set('Abandoned Chat?')
+     create()
      
 def tsindex(*entry):
      dex = tsname.index(*entry)
@@ -72,7 +72,7 @@ def tsindex(*entry):
      r.clipboard_append(tsscript[dex])
      r.update() 
      r.destroy()
-     tkvar4.set('Troubleshooting Steps')
+     create()
           
 #####establishes ui infromation and features    
 root = tk.Tk()
@@ -82,29 +82,18 @@ frame = tk.Frame(root)
 frame.pack(pady = 5, padx = 5)
 
 ####simple option box
-tkvar1 = StringVar(root)
-popupMenu = OptionMenu(frame, tkvar1, *smename, command=index)
-popupMenu.configure(width=20)
-popupMenu.grid(row = 1, column = 1)
-tkvar1.set('Start, Middle, & End')
+def add_grid(data, command, title, row):
+     var = StringVar(root)
+     popupMenu = OptionMenu(frame, var, *data, command=command)
+     popupMenu.configure(width=20)
+     popupMenu.grid(row = row, column = 1)
+     var.set(title)
 
-tkvar2 = StringVar(root)
-popupMenu = OptionMenu(frame, tkvar2, *rname, command=rindex)
-popupMenu.configure(width=20)
-popupMenu.grid(row = 2, column = 1)
-tkvar2.set('Remote')
-
-tkvar3 = StringVar(root)
-popupMenu = OptionMenu(frame, tkvar3, *acname, command=acindex)
-popupMenu.configure(width=20)
-popupMenu.grid(row = 3, column = 1)
-tkvar3.set('Abandoned Chat?')
-
-tkvar4 = StringVar(root)
-popupMenu = OptionMenu(frame, tkvar4, *tsname, command=tsindex)
-popupMenu.configure(width=20)
-popupMenu.grid(row = 4, column = 1)
-tkvar4.set('Troubleshooting Steps')
+def create():
+     add_grid(smename, index, 'Start, Middle, & End', 1)
+     add_grid(rname, rindex, 'Remote', 2)
+     add_grid(acname, acindex, 'Abandoned Chat?', 3)
+     add_grid(tsname, tsindex, 'Troubleshooting Steps', 4)
 
 #####runs the mainloop to start the ui =
 root.mainloop()
